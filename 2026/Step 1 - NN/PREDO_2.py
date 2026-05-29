@@ -6,23 +6,59 @@ import matplotlib.pyplot as plt
 
 # Número de camadas
 camadas_modelos = [
-    1, 2, 1, 1, 2,
-    2, 1, 2, 1, 2,
-    1, 2, 1, 1
+
+    1,  # FNN
+    2,  # CNN
+    1,  # RNN
+    1,  # GRU
+    2,  # LSTM
+    2,  # LSTM_FNN
+    1,  # LSTM_CNN
+    2,  # GRU_CNN
+    1,  # GRU_MLP
+    2,  # GRU_RNN
+    1,  # LSTM_RNN
+    2,  # TCN
+    1,  # TCN_LSTM
+    1   # TCN_GRU
 ]
 
 # Dropout
 dropout_modelos = [
-    0.0, 0.0, 0.1, 0.0, 0.0,
-    0.2, 0.1, 0.2, 0.1, 0.0,
-    0.0, 0.0, 0.3, 0.0
+
+    0.0,  # FNN
+    0.0,  # CNN
+    0.1,  # RNN
+    0.0,  # GRU
+    0.0,  # LSTM
+    0.2,  # LSTM_FNN
+    0.1,  # LSTM_CNN
+    0.2,  # GRU_CNN
+    0.1,  # GRU_MLP
+    0.0,  # GRU_RNN
+    0.0,  # LSTM_RNN
+    0.0,  # TCN
+    0.3,  # TCN_LSTM
+    0.0   # TCN_GRU
 ]
 
 # Learning rate
 lr_modelos = [
-    1e-3, 1e-4, 1e-3, 1e-3, 1e-4,
-    1e-3, 1e-4, 5e-4, 5e-4, 1e-3,
-    1e-3, 1e-4, 1e-3, 1e-4
+
+    1e-3,  # FNN
+    1e-4,  # CNN
+    1e-3,  # RNN
+    1e-3,  # GRU
+    1e-4,  # LSTM
+    1e-3,  # LSTM_FNN
+    1e-4,  # LSTM_CNN
+    5e-4,  # GRU_CNN
+    5e-4,  # GRU_MLP
+    1e-3,  # GRU_RNN
+    1e-3,  # LSTM_RNN
+    1e-4,  # TCN
+    1e-3,  # TCN_LSTM
+    1e-4   # TCN_GRU
 ]
 
 # ==========================================================
