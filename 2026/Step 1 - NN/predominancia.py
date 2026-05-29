@@ -148,7 +148,6 @@ for i in range(len(fases)):
 
 ax.set_ylabel('Porcentagem (%)', fontsize=12)
 ax.set_xlabel('Fase', fontsize=12)
-ax.set_title('Distribuição dos Otimizadores: 1º Melhor vs 2º Melhor', fontsize=14)
 ax.set_xticks(x)
 ax.set_xticklabels(fases)
 ax.set_ylim(0, 100)
