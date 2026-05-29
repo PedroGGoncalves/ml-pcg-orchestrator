@@ -9,8 +9,8 @@ camadas_modelos = [
 
     1,  # FNN
     2,  # CNN
-    1,  # RNN
-    1,  # GRU
+    2,  # RNN
+    2,  # GRU
     2,  # LSTM
     2,  # LSTM_FNN
     1,  # LSTM_CNN
@@ -33,12 +33,12 @@ dropout_modelos = [
     0.0,  # LSTM
     0.2,  # LSTM_FNN
     0.1,  # LSTM_CNN
-    0.2,  # GRU_CNN
+    0.1,  # GRU_CNN
     0.1,  # GRU_MLP
     0.0,  # GRU_RNN
     0.0,  # LSTM_RNN
     0.0,  # TCN
-    0.3,  # TCN_LSTM
+    0.0,  # TCN_LSTM
     0.0   # TCN_GRU
 ]
 
@@ -46,13 +46,13 @@ dropout_modelos = [
 lr_modelos = [
 
     1e-3,  # FNN
-    1e-4,  # CNN
+    1e-3,  # CNN
     1e-3,  # RNN
     1e-3,  # GRU
     1e-4,  # LSTM
     1e-3,  # LSTM_FNN
     1e-4,  # LSTM_CNN
-    5e-4,  # GRU_CNN
+    1e-3,  # GRU_CNN
     5e-4,  # GRU_MLP
     1e-3,  # GRU_RNN
     1e-3,  # LSTM_RNN
@@ -116,11 +116,10 @@ fig, ax = plt.subplots(figsize=(12, 6))
 # ==========================================================
 
 cores_camadas = {
-    1: 'blue',
-    2: 'green',
-    3: 'gray'
+    1: '#1f3b73',  # azul escuro
+    2: '#4a6fa5',  # azul médio
+    3: '#a6b8d8'   # azul claro
 }
-
 left = 0
 
 for camada in camadas_possiveis:
@@ -155,10 +154,10 @@ for camada in camadas_possiveis:
 # ==========================================================
 
 cores_dropout = {
-    0.0: 'red',
-    0.1: 'orange',
-    0.2: 'purple',
-    0.3: 'brown'
+    0.0: '#4d4d4d',  # cinza escuro
+    0.1: '#737373',  # cinza médio
+    0.2: '#a6a6a6',  # cinza claro
+    0.3: '#d9d9d9'   # cinza bem claro
 }
 
 left = 0
@@ -195,10 +194,10 @@ for dropout in dropouts_possiveis:
 # ==========================================================
 
 cores_lr = {
-    1e-3: 'cyan',
-    5e-4: 'magenta',
-    1e-4: 'lime',
-    1e-5: 'black'
+    1e-3: '#2f6f4f',  # verde escuro
+    5e-4: '#4f9d69',  # verde médio
+    1e-4: '#7fbf9b',  # verde claro
+    1e-5: '#b7e4c7'   # verde bem claro
 }
 
 left = 0
@@ -237,11 +236,6 @@ for lr in lrs_possiveis:
 ax.set_xlim(0, 100)
 
 ax.set_xlabel('Porcentagem (%)', fontsize=12)
-
-ax.set_title(
-    'Distribuição de Camadas, Dropout e Learning Rate',
-    fontsize=14
-)
 
 # remover legendas duplicadas
 handles, labels = ax.get_legend_handles_labels()

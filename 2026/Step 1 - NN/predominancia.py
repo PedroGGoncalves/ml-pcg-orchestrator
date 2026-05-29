@@ -29,7 +29,6 @@ RNN_2o  = ['Adam', 'Adam', 'Adam', 'Adam']
 GRU_1o  = ['SGD', 'Adam', 'RMSprop', 'SGD']
 GRU_2o  = ['Adam', 'SGD', 'SGD', 'Adam']
 
-
 GRU_CNN_1o  = ['SGD', 'Adam', 'RMSprop', 'SGD']
 GRU_CNN_2o  = ['Adam', 'SGD', 'SGD', 'Adam']
 
@@ -66,6 +65,7 @@ arquiteturas_2o = [
     LSTM_FNN_2o, LSTM_CNN_2o, GRU_CNN_2o, GRU_MLP_2o,
     GRU_RNN_2o, LSTM_RNN_2o, TCN_2o, TCN_LSTM_2o, TCN_GRU_2o
 ]
+
 otimizadores = ['SGD', 'Adam', 'RMSprop']
 cores = {
     'SGD': 'blue',
@@ -99,8 +99,8 @@ porcentagens_2o = calcular_porcentagens(arquiteturas_2o)
 
 fig, ax = plt.subplots(figsize=(12, 6))
 
-x = np.arange(len(fases))  # posições das fases
-width = 0.35  # largura de cada barra
+x = np.arange(len(fases))
+width = 0.35
 
 # Barras do 1º melhor (esquerda)
 bottom1 = np.zeros(len(fases))
@@ -117,6 +117,34 @@ for opt in otimizadores:
     if sum(valores) > 0:
         ax.bar(x + width/2, valores, width, bottom=bottom2, label=f'2º - {opt}', color=cores[opt], alpha=0.5, edgecolor='black', linewidth=1)
         bottom2 += np.array(valores)
+
+# ==========================================================
+# ADICIONAR PORCENTAGEM DENTRO DOS BLOCOS - 1º MELHOR
+# ==========================================================
+for i in range(len(fases)):
+    y = 0
+    for opt in otimizadores:
+        valor = porcentagens_1o[opt][i]
+        if valor > 5:
+            ax.text(i - width/2, y + valor/2, f'{valor:.0f}%', 
+                    ha='center', va='center', fontsize=8, fontweight='bold', color='white')
+        y += valor
+
+# ==========================================================
+# ADICIONAR PORCENTAGEM DENTRO DOS BLOCOS - 2º MELHOR
+# ==========================================================
+for i in range(len(fases)):
+    y = 0
+    for opt in otimizadores:
+        valor = porcentagens_2o[opt][i]
+        if valor > 5:
+            ax.text(i + width/2, y + valor/2, f'{valor:.0f}%', 
+                    ha='center', va='center', fontsize=8, fontweight='bold', color='white')
+        y += valor
+
+# ==========================================================
+# CONFIGURAÇÕES DO GRÁFICO
+# ==========================================================
 
 ax.set_ylabel('Porcentagem (%)', fontsize=12)
 ax.set_xlabel('Fase', fontsize=12)
